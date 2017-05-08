@@ -1,0 +1,58 @@
+{
+  "name": "vue-popper.js",
+  "version": "1.0.0",
+  "description": "VueJS popover",
+  "main": "dist/vue-popper.js",
+  "jsnext:main": "src/index.js",
+  "unpkg": "dist/vue-popper.min.js",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node_modules/.bin/eslint ./",
+    "patch": "npm version patch --no-git-tag-version && git add package.json && git commit -m 'update version' && git push origin master && bower version patch && git push origin master --follow-tags && npm publish",
+    "minor": "npm version minor --no-git-tag-version && git add package.json && git commit -m 'update version' && git push origin master && bower version minor && git push origin master --follow-tags && npm publish",
+    "major": "npm version major --no-git-tag-version && git add package.json && git commit -m 'update version' && git push origin master && bower version major && git push origin master --follow-tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinCK/vue-popper.git"
+  },
+  "author": "Igor Ognichenko <ognichenko.igor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobinCK/vue-popper/issues"
+  },
+  "keywords": [
+    "vue-popper.js",
+    "vue-popover",
+    "vuejs-popper.js",
+    "vuejs-popover",
+    "vue",
+    "vuejs",
+    "vue-plugin"
+  ],
+  "homepage": "https://github.com/RobinCK/vue-popper#readme",
+  "semistandard": {
+    "ignore": [
+      "node_modules",
+      "bower_components",
+      "build",
+      "dist",
+      "test"
+    ]
+  },
+  "dependencies": {
+    "popper.js": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "vue": "^2.3.2",
+    "webpack": "^2.5.1"
+  }
+}
