@@ -1,3 +1,5 @@
+#!/bin/sh
+
 npm run lint
 npm run hint
 npm run test
