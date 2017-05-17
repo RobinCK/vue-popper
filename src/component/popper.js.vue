@@ -91,7 +91,7 @@
 </template>
 
 <script>
-  import PopperJS from 'popper.js';
+  import Popper from 'popper.js';
 
   function on(element, event, handler) {
     if (element && event && handler) {
@@ -235,7 +235,7 @@
             this.$nextTick(this.updatePopper);
           };
 
-          this.popperJS = new PopperJS(this.referenceElm, this.popper, this.popperOptions);
+          this.popperJS = new Popper(this.referenceElm, this.popper, this.popperOptions);
         });
       },
 

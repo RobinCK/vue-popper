@@ -1,3 +1,3 @@
-import Popper from './component/popper.js.vue';
+import VuePopper from './component/popper.js.vue';
 
-export default Popper;
+export default VuePopper;
