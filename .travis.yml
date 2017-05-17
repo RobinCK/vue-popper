@@ -9,11 +9,6 @@ install:
 
 script:
   - npm run build
-  - npm test
-
-after_success:
-  - npm run coveralls
-  - npm run codecov
 
 notifications:
   email: false
