@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![Build Status](https://img.shields.io/travis/RobinCK/vue-popper.svg?style=flat-square)](https://travis-ci.org/RobinCK/vue-popper)[![Code Climate](https://img.shields.io/codeclimate/github/RobinCK/vue-popper.svg?style=flat-square)](https://codeclimate.com/github/RobinCK/vue-popper)[![npm](https://img.shields.io/npm/dt/vue-popper.js.svg?style=flat-square)](https://github.com/RobinCK/vue-popper.js)[![Dependencies](https://david-dm.org/robinck/vue-popper.svg?style=flat-square)](https://david-dm.org/robinck/vue-popper)[![devDependencies](https://david-dm.org/robinck/vue-popper/dev-status.svg?style=flat-square)](https://david-dm.org/robinck/vue-popper#info=devDependencies&view=table)[![Bower version](https://img.shields.io/bower/v/vue-popper.js.svg?style=flat-square)](https://github.com/RobinCK/vue-popper.js)[![NPM version](https://img.shields.io/npm/v/vue-popper.js.svg?style=flat-square)](https://www.npmjs.com/package/vue-popper.js)[![npm](https://img.shields.io/npm/l/vue-popper.js.svg?style=flat-square)](https://github.com/RobinCK/vue-popper.js/blob/master/LICENSE)
+  [![Build Status](https://img.shields.io/travis/RobinCK/vue-popper.svg?style=flat-square)](https://travis-ci.org/RobinCK/vue-popper)[![Code Climate](https://img.shields.io/codeclimate/github/RobinCK/vue-popper.svg?style=flat-square)](https://codeclimate.com/github/RobinCK/vue-popper)[![npm](https://img.shields.io/npm/dt/vue-popper.svg?style=flat-square)](https://github.com/RobinCK/vue-popper)[![Dependencies](https://david-dm.org/robinck/vue-popper.svg?style=flat-square)](https://david-dm.org/robinck/vue-popper)[![devDependencies](https://david-dm.org/robinck/vue-popper/dev-status.svg?style=flat-square)](https://david-dm.org/robinck/vue-popper#info=devDependencies&view=table)[![Bower version](https://img.shields.io/bower/v/vue-popperjs.svg?style=flat-square)](https://github.com/RobinCK/vue-popper)[![NPM version](https://img.shields.io/npm/v/vue-popperjs.svg?style=flat-square)](https://www.npmjs.com/package/vue-popperjs)[![npm](https://img.shields.io/npm/l/vue-popperjs.svg?style=flat-square)](https://github.com/RobinCK/vue-popper/blob/master/LICENSE)
 
 </div>
 
@@ -10,24 +10,24 @@ VueJS popover
 ## Install
 #### CDN
 
-Recommended: https://unpkg.com/vue-popper.js, which will reflect the latest version as soon as it is published to npm. You can also browse the source of the npm package at https://unpkg.com/vue-popper.js/
+Recommended: https://unpkg.com/vue-popperjs, which will reflect the latest version as soon as it is published to npm. You can also browse the source of the npm package at https://unpkg.com/vue-popperjs/
 
 #### NPM
 
 ``` bash
-npm install vue-popper.js --save
+npm install vue-popperjs --save
 ```
 
 #### Yarn
 
 ``` bash
-yarn add vue-popper.js
+yarn add vue-popperjs
 ```
 
 #### Bower
 
 ``` bash
-bower install vue-popper.js --save
+bower install vue-popperjs --save
 ```
 
 ## Development Setup
