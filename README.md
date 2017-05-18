@@ -131,3 +131,6 @@ npm run build
 | created      | context[Object]          | Created popper component |
 | show         |                          | Show popover |
 | hide         |                          | Hide popover |
+
+## License
+MIT © [Igor Ognichenko](https://github.com/RobinCK)
