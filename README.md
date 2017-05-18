@@ -128,6 +128,6 @@ npm run build
 ## Events
 | Name         | Params                   | Description  |
 | -------------|:-------------------------|--------------|
-| created      | Params: context[Object]  | Created popper component |
+| created      | context[Object]          | Created popper component |
 | show         |                          | Show popover |
 | hide         |                          | Hide popover |
