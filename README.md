@@ -5,7 +5,7 @@
 </p>
 
 # vue-popper
-VueJS popover
+VueJS popover component based <a href="https://popper.js.org/">popper.js</a>
 
 ## Install
 #### CDN
