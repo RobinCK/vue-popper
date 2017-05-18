@@ -14,7 +14,8 @@
     "vuejs-popover",
     "vue",
     "vuejs",
-    "vue-plugin"
+    "vue-plugin",
+    "vue-component"
   ],
   "homepage": "https://github.com/RobinCK/vue-popper",
   "ignore": [
