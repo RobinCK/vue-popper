@@ -112,7 +112,10 @@
         default: 'hover',
         validator: value => ['click', 'hover'].indexOf(value) > -1
       },
-      disabled: Boolean,
+      disabled: {
+        type: Boolean,
+        default: false``
+      },
       content: String,
       boundariesSelector: String,
       reference: {},
@@ -126,7 +129,7 @@
       },
       transition: {
         type: String,
-        default: 'fade-in-linear'
+        default: ''
       },
       options: {
         type: Object,

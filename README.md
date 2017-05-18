@@ -110,3 +110,24 @@ npm run build
   });
 </script>
 ```
+
+## Props
+
+| Props               | Type      | Default                                         | Description  |
+| --------------------|:----------| ------------------------------------------------|--------------|
+| trigger             | String    | hover                                           | Optional value: hover or click  |
+| disabled            | Boolean   | false                                           |   |
+| content             | String    | null                                            |   |
+| boundariesSelector  | String    | null                                            |   |
+| appendToBody        | Boolean   | false                                           |   |
+| visibleArrow        | Boolean   | true                                            |   |
+| transition          | String    | empty                                           |   |
+| options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
+
+
+## Events
+| Name         | Params                   | Description  |
+| -------------|:-------------------------|--------------|
+| created      | Params: context[Object]  | Created popper component |
+| show         |                          | Show popover |
+| hide         |                          | Hide popover |
