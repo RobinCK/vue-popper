@@ -56,7 +56,7 @@ npm run build
 
 ## Usage
 
-### Webpack and vueJS single file
+### VueJS single file (ECMAScript 2015)
 ```html
 <template>
   <popper trigger="click" :options="{placement: 'top'}">
@@ -80,4 +80,33 @@ npm run build
     },
   }
 </script> 
+```
+
+### Browser (ES5)
+```html
+<script type="text/javascript" src="popper.js"></script>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="vue-popper.js"></script>
+<script type="text/javascript" src="vue-popper.css"></script>
+
+<div id="app">
+  <popper trigger="click" :options="{placement: 'top'}">
+    <div class="popper">
+      Popper Content
+    </div>
+
+    <button slot="reference">
+      Reference Element
+    </button>
+  </popper>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    components: {
+      'popper': VuePopper
+    }
+  });
+</script>
 ```
