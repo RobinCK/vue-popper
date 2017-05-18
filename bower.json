@@ -1,6 +1,6 @@
 {
   "name": "vue-popper.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "VueJS popover",
   "main": "dist/vue-popper.js",
   "authors": [
