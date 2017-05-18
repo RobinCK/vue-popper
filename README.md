@@ -6,6 +6,10 @@
 # vue-popperjs
 VueJS popover component based <a href="https://popper.js.org/">popper.js</a>
 
+## Example
+
+[jsFiddle](https://jsfiddle.net/Robin_ck/1espngy1/)
+
 ## Install
 #### CDN
 
