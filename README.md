@@ -44,26 +44,26 @@ npm run build
 
 ### Webpack and vueJS single file
 ```html
-  <template>
-    <popper trigger="click" :options="{placement: 'top'}">
-      <div class="popper">
-        Popper Content
-      </div>
+<template>
+  <popper trigger="click" :options="{placement: 'top'}">
+    <div class="popper">
+      Popper Content
+    </div>
 
-      <button slot="reference">
-        Reference Element
-      </button>
-    </popper>
-  </template>
+    <button slot="reference">
+      Reference Element
+    </button>
+  </popper>
+</template>
+
+<script>
+  import Popper from 'vue-popperjs';
+  import 'vue-popperjs/dist/css/vue-popper.css';
   
-  <script>
-    import Popper from 'vue-popperjs';
-    import 'vue-popperjs/dist/css/vue-popper.css';
-    
-    export default {
-      components: {
-        'popper': Popper
-      },
-    }
-  </script> 
+  export default {
+    components: {
+      'popper': Popper
+    },
+  }
+</script> 
 ```
