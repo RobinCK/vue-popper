@@ -2,12 +2,12 @@
   "name": "vue-popper.js",
   "version": "1.0.4",
   "description": "VueJS popover",
-  "main": "dist/vue-popper.js",
+  "main": "dist/js/vue-popper.js",
   "jsnext:main": "src/index.js",
-  "unpkg": "dist/vue-popper.min.js",
+  "unpkg": "dist/js/vue-popper.min.js",
   "files": [
     "src",
-    "dist/*.js"
+    "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
