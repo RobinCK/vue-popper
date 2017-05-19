@@ -115,12 +115,13 @@ npm run build
 
 | Props               | Type      | Default                                         | Description  |
 | --------------------|:----------| ------------------------------------------------|--------------|
-| trigger             | String    | hover                                           | Optional value: hover or click  |
 | disabled            | Boolean   | false                                           |   |
+| append-to-body      | Boolean   | false                                           |   |
+| visible-arrow       | Boolean   | true                                            |   |
+| force-show          | Boolean   | false                                           |   |
+| trigger             | String    | hover                                           | Optional value: hover or click  |
 | content             | String    | null                                            |   |
-| boundariesSelector  | String    | null                                            |   |
-| appendToBody        | Boolean   | false                                           |   |
-| visibleArrow        | Boolean   | true                                            |   |
+| boundaries-selector | String    | null                                            |   |
 | transition          | String    | empty                                           |   |
 | options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
 

@@ -43,10 +43,17 @@ var VuePopper$1 = { render: function render() {
         return ['click', 'hover'].indexOf(value) > -1;
       }
     },
-    disabled: Boolean,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     content: String,
     boundariesSelector: String,
     reference: {},
+    forceShow: {
+      type: Boolean,
+      default: false
+    },
     appendToBody: {
       type: Boolean,
       default: false
@@ -57,7 +64,7 @@ var VuePopper$1 = { render: function render() {
     },
     transition: {
       type: String,
-      default: 'fade-in-linear'
+      default: ''
     },
     options: {
       type: Object,
@@ -89,6 +96,15 @@ var VuePopper$1 = { render: function render() {
       } else {
         this.$emit('hide');
       }
+    },
+
+
+    forceShow: {
+      handler: function handler(value) {
+        this[value ? 'doShow' : 'doClose']();
+      },
+
+      immediate: true
     }
   },
 
@@ -241,7 +257,7 @@ var VuePopper$1 = { render: function render() {
       }, 10);
     },
     handleDocumentClick: function handleDocumentClick(e) {
-      if (!this.$el || !this.referenceElm || this.$el.contains(e.target) || this.referenceElm.contains(e.target) || !this.popper || this.popper.contains(e.target)) {
+      if (!this.$el || !this.referenceElm || this.$el.contains(e.target) || this.referenceElm.contains(e.target) || !this.popper || this.popper.contains(e.target) || this.forceShow) {
         return;
       }
 
