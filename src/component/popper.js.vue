@@ -5,6 +5,7 @@
     color: #212121;
     text-align: center;
     padding: 2px;
+    display: inline-block;
     border-radius: 3px;
     position: absolute;
     font-size: 14px;
