@@ -197,47 +197,13 @@ var VuePopper$1 = { render: function render() {
       this.popperJS = null;
     },
     appendArrow: function appendArrow(element) {
-      var hash = void 0;
-
       if (this.appended) {
         return;
       }
 
       this.appended = true;
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = element.attributes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var item = _step.value;
-
-          if (/^_v-/.test(item.name)) {
-            hash = item.name;
-            break;
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
       var arrow = document.createElement('div');
-
-      if (hash) {
-        arrow.setAttribute(hash, '');
-      }
       arrow.setAttribute('x-arrow', '');
       arrow.className = 'popper__arrow';
       element.appendChild(arrow);
