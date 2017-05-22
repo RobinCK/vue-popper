@@ -267,26 +267,13 @@
       },
 
       appendArrow(element) {
-        let hash;
-
         if (this.appended) {
           return;
         }
 
         this.appended = true;
 
-        for (const item of element.attributes) {
-          if (/^_v-/.test(item.name)) {
-            hash = item.name;
-            break;
-          }
-        }
-
         const arrow = document.createElement('div');
-
-        if (hash) {
-          arrow.setAttribute(hash, '');
-        }
         arrow.setAttribute('x-arrow', '');
         arrow.className = 'popper__arrow';
         element.appendChild(arrow);
