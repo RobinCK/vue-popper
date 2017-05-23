@@ -201,7 +201,9 @@
 
     methods: {
       doToggle() {
-        this.showPopper = !this.showPopper;
+        if (!this.forceShow) {
+          this.showPopper = !this.showPopper;
+        }
       },
 
       doShow() {
