@@ -134,7 +134,9 @@ var VuePopper$1 = { render: function render() {
 
   methods: {
     doToggle: function doToggle() {
-      this.showPopper = !this.showPopper;
+      if (!this.forceShow) {
+        this.showPopper = !this.showPopper;
+      }
     },
     doShow: function doShow() {
       this.showPopper = true;
