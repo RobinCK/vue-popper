@@ -33,7 +33,7 @@ function off(element, event, handler) {
 }
 
 var VuePopper$1 = { render: function render() {
-    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('span', [_c('transition', { attrs: { "name": _vm.transition }, on: { "after-leave": _vm.doDestroy } }, [_c('span', { directives: [{ name: "show", rawName: "v-show", value: !_vm.disabled && _vm.showPopper, expression: "!disabled && showPopper" }], ref: "popper" }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2)]), _vm._t("reference")], 2);
+    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('span', [_c('transition', { attrs: { "name": _vm.transition, "enter-active-class": _vm.enterActiveClass, "leave-active-class": _vm.leaveActiveClass }, on: { "after-leave": _vm.doDestroy } }, [_c('span', { directives: [{ name: "show", rawName: "v-show", value: !_vm.disabled && _vm.showPopper, expression: "!disabled && showPopper" }], ref: "popper" }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2)]), _vm._t("reference")], 2);
   }, staticRenderFns: [],
   props: {
     trigger: {
@@ -48,6 +48,8 @@ var VuePopper$1 = { render: function render() {
       default: false
     },
     content: String,
+    enterActiveClass: String,
+    leaveActiveClass: String,
     boundariesSelector: String,
     reference: {},
     forceShow: {
