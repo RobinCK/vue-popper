@@ -80,7 +80,7 @@
 
 <template>
   <span>
-    <transition :name="transition" @after-leave="doDestroy">
+    <transition :name="transition" :enter-active-class="enterActiveClass" :leave-active-class="leaveActiveClass" @after-leave="doDestroy">
       <span
         ref="popper"
         v-show="!disabled && showPopper">
@@ -118,6 +118,8 @@
         default: false
       },
       content: String,
+      enterActiveClass: String,
+      leaveActiveClass: String,
       boundariesSelector: String,
       reference: {},
       forceShow: {

@@ -121,6 +121,8 @@ npm run build
 | force-show          | Boolean   | false                                           |   |
 | trigger             | String    | hover                                           | Optional value: hover or click  |
 | content             | String    | null                                            |   |
+| enter-active-class  | String    | null                                            |   |
+| leave-active-class  | String    | null                                            |   |
 | boundaries-selector | String    | null                                            |   |
 | transition          | String    | empty                                           |   |
 | options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
