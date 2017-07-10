@@ -163,7 +163,7 @@ var VuePopper$1 = { render: function render() {
         }
 
         if (_this.appendToBody) {
-          document.body.appendChild(_this.popper);
+          document.body.appendChild(_this.popper.parentElement);
         }
 
         if (_this.popperJS && _this.popperJS.destroy) {

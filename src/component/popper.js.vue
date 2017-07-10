@@ -232,7 +232,7 @@
           }
 
           if (this.appendToBody) {
-            document.body.appendChild(this.popper)
+            document.body.appendChild(this.popper.parentElement);
           }
 
           if (this.popperJS && this.popperJS.destroy) {
