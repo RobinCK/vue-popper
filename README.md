@@ -1,6 +1,7 @@
 <p align="center">
   <a href="https://travis-ci.org/RobinCK/vue-popper"><img src="https://img.shields.io/travis/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://github.com/RobinCK/vue-ls"><img src="https://img.shields.io/badge/vuejs-2.x-brightgreen.svg?style=flat-square"></a>
+<a href="https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper.svg?type=shield"/></a>
   <a href="https://codeclimate.com/github/RobinCK/vue-popper"><img src="https://img.shields.io/codeclimate/github/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://www.npmjs.com/package/vue-popperjs"><img src="https://img.shields.io/npm/dt/vue-popperjs.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper"><img src="https://david-dm.org/RobinCK/vue-popper.svg?style=flat-square"></a>
@@ -13,6 +14,9 @@
   <a href="https://github.com/RobinCK/vue-popper/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/vue-popperjs.svg?style=flat-square"></a>
 
 </p>
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper?ref=badge_large)
 
 # vue-popperjs
 VueJS popover component based <a href="https://popper.js.org/">popper.js</a>
