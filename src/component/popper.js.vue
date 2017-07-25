@@ -113,6 +113,10 @@
         default: 'hover',
         validator: value => ['click', 'hover'].indexOf(value) > -1
       },
+      delayOnMouseOut: {
+        type: Number,
+        default: 10,
+      },
       disabled: {
         type: Boolean,
         default: false
@@ -296,7 +300,7 @@
       onMouseOut() {
         this._timer = setTimeout(() => {
           this.showPopper = false;
-        }, 10);
+        }, this.delayOnMouseOut);
       },
 
       handleDocumentClick(e) {
