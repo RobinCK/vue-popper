@@ -43,6 +43,10 @@ var VuePopper$1 = { render: function render() {
         return ['click', 'hover'].indexOf(value) > -1;
       }
     },
+    delayOnMouseOut: {
+      type: Number,
+      default: 10
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -224,7 +228,7 @@ var VuePopper$1 = { render: function render() {
 
       this._timer = setTimeout(function () {
         _this2.showPopper = false;
-      }, 10);
+      }, this.delayOnMouseOut);
     },
     handleDocumentClick: function handleDocumentClick(e) {
       if (!this.$el || !this.referenceElm || this.$el.contains(e.target) || this.referenceElm.contains(e.target) || !this.popper || this.popper.contains(e.target) || this.forceShow) {
