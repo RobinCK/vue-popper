@@ -289,7 +289,7 @@
       },
 
       updatePopper() {
-        this.popperJS ? this.popperJS.update() : this.createPopper();
+        this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
       },
 
       onMouseOver() {
