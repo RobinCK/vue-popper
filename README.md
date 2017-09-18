@@ -1,5 +1,5 @@
 <p align="center">
-<img width="250" src="https://cdn.rawgit.com/RobinCK/vue-popper/c0cb762f/doc/logo.png">
+<img width="250" src="https://cdn.rawgit.com/RobinCK/vue-popper/4431e4cc/doc/logo.png">
 </p>
 
 <p align="center">
