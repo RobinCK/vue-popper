@@ -358,7 +358,13 @@ var VuePopper$1 = { render: function render() {
       }, this.delayOnMouseOut);
     },
     handleDocumentClick: function handleDocumentClick(e) {
-      if (!this.$el || !this.referenceElm || this.$el.contains(e.target) || this.referenceElm.contains(e.target) || !this.popper || this.popper.contains(e.target) || this.forceShow) {
+      if (!this.$el || !this.referenceElm || this.$el.contains(e.target) || this.referenceElm.contains(e.target) || !this.popper || this.popper.contains(e.target)) {
+        return;
+      }
+
+      this.$emit('documentClick');
+
+      if (this.forceShow) {
         return;
       }
 
