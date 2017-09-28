@@ -307,9 +307,14 @@
         if (!this.$el || !this.referenceElm ||
           this.$el.contains(e.target) ||
           this.referenceElm.contains(e.target) ||
-          !this.popper || this.popper.contains(e.target) ||
-          this.forceShow
+          !this.popper || this.popper.contains(e.target)
         ) {
+          return;
+        }
+
+        this.$emit('documentClick');
+
+        if (this.forceShow) {
           return;
         }
 

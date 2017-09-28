@@ -134,11 +134,12 @@ npm run build
 
 
 ## Events
-| Name         | Params                   | Description  |
-| -------------|:-------------------------|--------------|
-| created      | context[Object]          | Created popper component |
-| show         |                          | Show popover |
-| hide         |                          | Hide popover |
+| Name            | Params                   | Description  |
+| ----------------|:-------------------------|--------------|
+| created         | context[Object]          | Created popper component |
+| show            |                          | Show popover |
+| hide            |                          | Hide popover |
+| document-click  |                          | |
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper?ref=badge_large)
