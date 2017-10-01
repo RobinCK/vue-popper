@@ -273,6 +273,10 @@
         off(document, 'click', this.handleDocumentClick);
 
         this.popperJS = null;
+
+        if (this.appendToBody) {
+          document.body.removeChild(this.popper.parentElement);
+        }
       },
 
       appendArrow(element) {
