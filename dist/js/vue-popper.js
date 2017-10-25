@@ -330,6 +330,10 @@ var VuePopper$1 = { render: function render() {
       off(document, 'click', this.handleDocumentClick);
 
       this.popperJS = null;
+
+      if (this.appendToBody) {
+        document.body.removeChild(this.popper.parentElement);
+      }
     },
     appendArrow: function appendArrow(element) {
       if (this.appended) {
