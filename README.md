@@ -19,7 +19,7 @@
 </p>
 
 # vue-popperjs
-VueJS popover component based <a href="https://popper.js.org/">popper.js</a>
+VueJS popover component based on <a href="https://popper.js.org/">popper.js</a>
 
 ## Example
 
