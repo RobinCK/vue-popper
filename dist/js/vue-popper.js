@@ -242,6 +242,8 @@ var VuePopper$1 = { render: function render() {
   },
 
   created: function created() {
+    this.appendedArrow = false;
+    this.appendedToBody = false;
     this.popperOptions = _extends(this.popperOptions, this.options);
   },
   mounted: function mounted() {
@@ -260,8 +262,6 @@ var VuePopper$1 = { render: function render() {
         on(this.popper, 'mouseout', this.onMouseOut);
         break;
     }
-
-    this.createPopper();
   },
 
 
@@ -278,12 +278,19 @@ var VuePopper$1 = { render: function render() {
       this.showPopper = false;
     },
     doDestroy: function doDestroy() {
-      if (this.showPopper || !this.popperJS) {
+      if (this.showPopper) {
         return;
       }
 
-      this.popperJS.destroy();
-      this.popperJS = null;
+      if (this.popperJS) {
+        this.popperJS.destroy();
+        this.popperJS = null;
+      }
+
+      if (this.appendedToBody) {
+        this.appendedToBody = false;
+        document.body.removeChild(this.popper.parentElement);
+      }
     },
     createPopper: function createPopper() {
       var _this = this;
@@ -293,7 +300,8 @@ var VuePopper$1 = { render: function render() {
           _this.appendArrow(_this.popper);
         }
 
-        if (_this.appendToBody) {
+        if (_this.appendToBody && !_this.appendedToBody) {
+          _this.appendedToBody = true;
           document.body.appendChild(_this.popper.parentElement);
         }
 
@@ -329,18 +337,15 @@ var VuePopper$1 = { render: function render() {
       off(this.referenceElm, 'mouseover', this.onMouseOver);
       off(document, 'click', this.handleDocumentClick);
 
-      this.popperJS = null;
-
-      if (this.appendToBody) {
-        document.body.removeChild(this.popper.parentElement);
-      }
+      this.showPopper = false;
+      this.doDestroy();
     },
     appendArrow: function appendArrow(element) {
-      if (this.appended) {
+      if (this.appendedArrow) {
         return;
       }
 
-      this.appended = true;
+      this.appendedArrow = true;
 
       var arrow = document.createElement('div');
       arrow.setAttribute('x-arrow', '');
