@@ -201,8 +201,6 @@
           on(this.popper, 'mouseout', this.onMouseOut);
           break;
       }
-
-      this.createPopper();
     },
 
     methods: {
