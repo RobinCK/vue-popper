@@ -182,6 +182,8 @@
     },
 
     created() {
+      this.appendedArrow = false;
+      this.appendedToBody = false;
       this.popperOptions = Object.assign(this.popperOptions, this.options);
     },
 
@@ -219,12 +221,19 @@
       },
 
       doDestroy() {
-        if (this.showPopper || !this.popperJS) {
+        if (this.showPopper) {
           return;
         }
 
-        this.popperJS.destroy();
-        this.popperJS = null;
+        if (this.popperJS) {
+          this.popperJS.destroy();
+          this.popperJS = null;
+        }
+
+        if (this.appendedToBody) {
+          this.appendedToBody = false;
+          document.body.removeChild(this.popper.parentElement);
+        }
       },
 
       createPopper() {
@@ -233,7 +242,8 @@
             this.appendArrow(this.popper);
           }
 
-          if (this.appendToBody) {
+          if (this.appendToBody && !this.appendedToBody) {
+            this.appendedToBody = true;
             document.body.appendChild(this.popper.parentElement);
           }
 
@@ -270,19 +280,16 @@
         off(this.referenceElm, 'mouseover', this.onMouseOver);
         off(document, 'click', this.handleDocumentClick);
 
-        this.popperJS = null;
-
-        if (this.appendToBody) {
-          document.body.removeChild(this.popper.parentElement);
-        }
+        this.showPopper = false;
+        this.doDestroy();
       },
 
       appendArrow(element) {
-        if (this.appended) {
+        if (this.appendedArrow) {
           return;
         }
 
-        this.appended = true;
+        this.appendedArrow = true;
 
         const arrow = document.createElement('div');
         arrow.setAttribute('x-arrow', '');
