@@ -8,3 +8,4 @@ bower.json
 circle.yml
 CHANGELOG.md
 .codeclimate.yml
+.gitattributes

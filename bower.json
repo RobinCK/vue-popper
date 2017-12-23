@@ -21,6 +21,7 @@
   "ignore": [
     ".idea",
     ".git",
+    ".gitattributes",
     ".bowerrc",
     ".gitignore",
     ".jshintignore",
