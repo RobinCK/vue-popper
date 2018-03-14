@@ -314,9 +314,9 @@
 
       handleDocumentClick(e) {
         if (!this.$el || !this.referenceElm ||
-          this.$el.contains(e.target) ||
-          this.referenceElm.contains(e.target) ||
-          !this.popper || this.popper.contains(e.target)
+          this.elementContains(this.$el, e.target) ||
+          this.elementContains(this.referenceElm, e.target) ||
+          !this.popper || this.elementContains(this.popper, e.target)
         ) {
           return;
         }
@@ -328,6 +328,14 @@
         }
 
         this.showPopper = false;
+      },
+
+      elementContains(elm, otherElm) {
+        if (typeof elm.contains === 'function') {
+          return elm.contains(otherElm);
+        }
+
+        return false;
       }
     },
 
