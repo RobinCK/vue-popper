@@ -314,9 +314,10 @@
 
       handleDocumentClick(e) {
         if (!this.$el || !this.referenceElm ||
-          this.$el.contains(e.target) ||
-          this.referenceElm.contains(e.target) ||
-          !this.popper || this.popper.contains(e.target)
+          (typeof this.$el.contains === 'function' && this.$el.contains(e.target)) ||
+          (typeof this.referenceElm.contains === 'function' && this.referenceElm.contains(e.target)) ||
+          !this.popper || 
+          (typeof this.popper.contains === 'function' &&  && this.popper.contains(e.target))
         ) {
           return;
         }
