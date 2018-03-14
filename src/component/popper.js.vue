@@ -314,8 +314,8 @@
 
       handleDocumentClick(e) {
         if (!this.$el || !this.referenceElm ||
-            this.elementContains(this.$el, e.target) ||
-            this.elementContains(this.referenceElm, e.target) ||
+          this.elementContains(this.$el, e.target) ||
+          this.elementContains(this.referenceElm, e.target) ||
           !this.popper || this.elementContains(this.popper, e.target)
         ) {
           return;
