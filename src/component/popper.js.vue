@@ -316,8 +316,8 @@
         if (!this.$el || !this.referenceElm ||
           (typeof this.$el.contains === 'function' && this.$el.contains(e.target)) ||
           (typeof this.referenceElm.contains === 'function' && this.referenceElm.contains(e.target)) ||
-          !this.popper || 
-          (typeof this.popper.contains === 'function' &&  && this.popper.contains(e.target))
+          !this.popper ||
+          (typeof this.popper.contains === 'function' && this.popper.contains(e.target))
         ) {
           return;
         }
