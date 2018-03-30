@@ -141,6 +141,13 @@ npm run build
 | hide            |                          | Hide popover |
 | document-click  |                          | |
 
+## Other my Vue JS plugins
+
+| Project | Status | Description |
+|---------|--------|-------------|
+| [vue-ls](https://github.com/RobinCK/vue-ls)                | ![npm](https://img.shields.io/npm/v/vue-ls.svg)      | Vue plugin for work with local storage, session storage and memory storage from Vue context |
+| [vue-gallery](https://github.com/RobinCK/vue-gallery)      | ![npm](https://img.shields.io/npm/v/vue-gallery.svg) | Responsive and customizable image and video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers |
+
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobinCK%2Fvue-popper?ref=badge_large)
 
