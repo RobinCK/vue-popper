@@ -19,6 +19,8 @@
 </p>
 
 # vue-popperjs
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/RobinCK/vue-popper.svg)](https://greenkeeper.io/)
 VueJS popover component based on <a href="https://popper.js.org/">popper.js</a>
 
 ## Example
