@@ -60,7 +60,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
     "eslint": "^4.7.0",
-    "rollup": "^0.50.0",
+    "rollup": "^0.58.1",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-uglify": "^2.0.0",
     "rollup-plugin-vue": "^2.4.0"
