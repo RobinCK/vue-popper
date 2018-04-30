@@ -1,6 +1,6 @@
 {
   "name": "vue-popperjs",
-  "version": "1.2.6",
+  "version": "1.3.0",
   "description": "VueJS popover",
   "main": "dist/js/vue-popper.js",
   "jsnext:main": "src/index.js",
@@ -47,22 +47,23 @@
     ]
   },
   "dependencies": {
-    "popper.js": "^1.9.1",
-    "vue": "^2.3.3"
+    "popper.js": "^1.14.3",
+    "vue": "^2.5.16"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-polyfill": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "eslint": "^4.7.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-uglify": "^2.0.0",
-    "rollup-plugin-vue": "^2.4.0"
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "rollup": "^0.58.1",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-plugin-vue": "^3.0.0",
+    "vue-template-compiler": "^2.5.16"
   }
 }
