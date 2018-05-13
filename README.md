@@ -5,7 +5,6 @@
 <p align="center">
   <a href="https://travis-ci.org/RobinCK/vue-popper"><img src="https://img.shields.io/travis/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://github.com/RobinCK/vue-popper"><img src="https://img.shields.io/badge/vuejs-2.x-brightgreen.svg?style=flat-square"></a>
-  <a href="https://codeclimate.com/github/RobinCK/vue-popper"><img src="https://img.shields.io/codeclimate/github/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://www.npmjs.com/package/vue-popperjs"><img src="https://img.shields.io/npm/dt/vue-popperjs.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper"><img src="https://david-dm.org/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper?type=dev"><img src="https://david-dm.org/RobinCK/vue-popper/dev-status.svg?style=flat-square"></a>
