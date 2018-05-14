@@ -1798,7 +1798,7 @@ rollup-plugin-uglify@^3.0.0:
   dependencies:
     uglify-es "^3.3.7"
 
-rollup-plugin-vue@^4.0.1:
+rollup-plugin-vue@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-vue/-/rollup-plugin-vue-4.0.1.tgz#7523964a5330ebd671b34b0f65969ea55c1153ba"
   dependencies:
