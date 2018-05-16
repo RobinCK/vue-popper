@@ -89,10 +89,10 @@ npm run build
 
 ### Browser (ES5)
 ```html
+<link rel="stylesheet" href="vue-popper.css">
 <script type="text/javascript" src="popper.js"></script>
 <script type="text/javascript" src="vue.js"></script>
 <script type="text/javascript" src="vue-popper.js"></script>
-<script type="text/javascript" src="vue-popper.css"></script>
 
 <div id="app">
   <popper trigger="click" :options="{placement: 'top'}">
