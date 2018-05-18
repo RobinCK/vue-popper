@@ -47,8 +47,7 @@
     ]
   },
   "dependencies": {
-    "popper.js": "^1.14.3",
-    "vue": "^2.5.16"
+    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
