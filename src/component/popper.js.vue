@@ -313,6 +313,7 @@
       },
 
       onMouseOut() {
+        clearTimeout(this._timer);
         this._timer = setTimeout(() => {
           this.showPopper = false;
         }, this.delayOnMouseOut);
