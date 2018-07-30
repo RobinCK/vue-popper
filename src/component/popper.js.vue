@@ -113,6 +113,10 @@
         default: 'hover',
         validator: value => ['click', 'hover'].indexOf(value) > -1
       },
+      delayOnMouseOver: {
+        type: Number,
+        default: 10,
+      },
       delayOnMouseOut: {
         type: Number,
         default: 10,
@@ -302,11 +306,14 @@
       },
 
       onMouseOver() {
-        this.showPopper = true;
         clearTimeout(this._timer);
+        this._timer = setTimeout(() => {
+          this.showPopper = true;
+        }, this.delayOnMouseOver);
       },
 
       onMouseOut() {
+        clearTimeout(this._timer);
         this._timer = setTimeout(() => {
           this.showPopper = false;
         }, this.delayOnMouseOut);
