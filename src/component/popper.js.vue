@@ -182,6 +182,12 @@
           this[value ? 'doShow' : 'doClose']();
         },
         immediate: true
+      },
+
+      disabled(value) {
+        if (!value) {
+          this.showPopper = false
+        }
       }
     },
 
