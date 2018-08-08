@@ -202,9 +202,13 @@
           break;
         case 'hover':
           on(this.referenceElm, 'mouseover', this.onMouseOver);
+          on(this.referenceElm, 'focus', this.onMouseOver);
           on(this.popper, 'mouseover', this.onMouseOver);
+          on(this.popper, 'focus', this.onMouseOver);
           on(this.referenceElm, 'mouseout', this.onMouseOut);
+          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'mouseout', this.onMouseOut);
+          on(this.popper, 'blur', this.onMouseOut);
           break;
       }
     },
