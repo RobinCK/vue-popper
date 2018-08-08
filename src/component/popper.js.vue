@@ -113,6 +113,10 @@
         default: 'hover',
         validator: value => ['click', 'hover'].indexOf(value) > -1
       },
+      delayOnMouseOver: {
+        type: Number,
+        default: 10,
+      },
       delayOnMouseOut: {
         type: Number,
         default: 10,
@@ -178,6 +182,12 @@
           this[value ? 'doShow' : 'doClose']();
         },
         immediate: true
+      },
+
+      disabled(value) {
+        if (!value) {
+          this.showPopper = false
+        }
       }
     },
 
@@ -198,9 +208,13 @@
           break;
         case 'hover':
           on(this.referenceElm, 'mouseover', this.onMouseOver);
+          on(this.referenceElm, 'focus', this.onMouseOver);
           on(this.popper, 'mouseover', this.onMouseOver);
+          on(this.popper, 'focus', this.onMouseOver);
           on(this.referenceElm, 'mouseout', this.onMouseOut);
+          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'mouseout', this.onMouseOut);
+          on(this.popper, 'blur', this.onMouseOut);
           break;
       }
     },
@@ -302,11 +316,14 @@
       },
 
       onMouseOver() {
-        this.showPopper = true;
         clearTimeout(this._timer);
+        this._timer = setTimeout(() => {
+          this.showPopper = true;
+        }, this.delayOnMouseOver);
       },
 
       onMouseOut() {
+        clearTimeout(this._timer);
         this._timer = setTimeout(() => {
           this.showPopper = false;
         }, this.delayOnMouseOut);

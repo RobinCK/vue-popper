@@ -121,6 +121,7 @@ npm run build
 | Props               | Type      | Default                                         | Description  |
 | --------------------|:----------| ------------------------------------------------|--------------|
 | disabled            | Boolean   | false                                           |   |
+| delay-on-mouse-over | Number    | 10                                              | Delay in ms before showing popper during a mouse over |
 | delay-on-mouse-out  | Number    | 10                                              | Delay in ms before hiding popper during a mouse out |
 | append-to-body      | Boolean   | false                                           |   |
 | visible-arrow       | Boolean   | true                                            |   |
