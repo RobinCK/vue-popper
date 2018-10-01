@@ -134,7 +134,7 @@
         type: Boolean,
         default: false
       },
-      data: {
+      dataValue: {
         default: null,
       },
       appendToBody: {
