@@ -134,6 +134,9 @@
         type: Boolean,
         default: false
       },
+      data: {
+        default: null,
+      },
       appendToBody: {
         type: Boolean,
         default: false
@@ -170,10 +173,10 @@
     watch: {
       showPopper(value) {
         if (value) {
-          this.$emit('show');
+          this.$emit('show', this);
           this.updatePopper();
         } else {
-          this.$emit('hide');
+          this.$emit('hide', this);
         }
       },
 
@@ -338,7 +341,7 @@
           return;
         }
 
-        this.$emit('documentClick');
+        this.$emit('documentClick', this);
 
         if (this.forceShow) {
           return;

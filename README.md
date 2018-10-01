@@ -133,6 +133,7 @@ npm run build
 | boundaries-selector | String    | null                                            |   |
 | transition          | String    | empty                                           |   |
 | options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
+| data                | Any       | null                                            | data of popper  |
 
 
 ## Events
