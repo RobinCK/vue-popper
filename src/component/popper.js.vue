@@ -165,7 +165,9 @@
         currentPlacement: '',
         popperOptions: {
           placement: 'bottom',
-          gpuAcceleration: false
+          computeStyle: {
+            gpuAcceleration: false
+          }
         }
       };
     },
