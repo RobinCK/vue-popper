@@ -190,8 +190,8 @@
       },
 
       disabled(value) {
-        if (!value) {
-          this.showPopper = false
+        if (value) {
+          this.showPopper = false;
         }
       }
     },
