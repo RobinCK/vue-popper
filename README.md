@@ -64,7 +64,12 @@ npm run build
 ### VueJS single file (ECMAScript 2015)
 ```html
 <template>
-  <popper trigger="click" :options="{placement: 'top'}">
+  <popper
+    trigger="click"
+    :options="{
+      placement: 'top',
+      modifiers: { offset: { offset: '0,10px' } }
+    }">
     <div class="popper">
       Popper Content
     </div>
@@ -95,7 +100,12 @@ npm run build
 <script type="text/javascript" src="vue-popper.js"></script>
 
 <div id="app">
-  <popper trigger="click" :options="{placement: 'top'}">
+  <popper
+    trigger="click"
+    :options="{
+      placement: 'top',
+      modifiers: { offset: { offset: '0,10px' } }
+    }">
     <div class="popper">
       Popper Content
     </div>
