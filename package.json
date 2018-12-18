@@ -2,8 +2,8 @@
   "name": "vue-popperjs",
   "version": "1.6.3",
   "description": "VueJS popover",
-  "main": "dist/js/vue-popper.js",
-  "module": "dist/js/vue-popper.js",
+  "main": "dist/js/vue-popper.min.js",
+  "module": "dist/js/vue-popper.min.js",
   "jsnext:main": "src/index.js",
   "unpkg": "dist/js/vue-popper.min.js",
   "files": [
