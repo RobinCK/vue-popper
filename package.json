@@ -3,6 +3,7 @@
   "version": "1.6.2",
   "description": "VueJS popover",
   "main": "dist/js/vue-popper.js",
+  "module": "dist/js/vue-popper.js",
   "jsnext:main": "src/index.js",
   "unpkg": "dist/js/vue-popper.min.js",
   "files": [
