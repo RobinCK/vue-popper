@@ -4,10 +4,12 @@ import babel from 'rollup-plugin-babel';
 import {uglify} from 'rollup-plugin-uglify';
 
 export default {
-  entry: 'src/index.js',
-  dest: process.env.NODE_ENV === 'production' ? 'dist/js/vue-popper.min.js' : 'dist/js/vue-popper.js',
-  moduleName: 'VuePopper',
-  format: 'umd',
+  input: 'src/index.js',
+  output: {
+    file: process.env.NODE_ENV === 'production' ? 'dist/js/vue-popper.min.js' : 'dist/js/vue-popper.js',
+    format: 'umd',
+    name: 'VuePopper',
+  },
   plugins: [
     vue({
       css (style, styles, compiler) {
