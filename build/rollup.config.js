@@ -1,32 +1,27 @@
-import fs from 'fs';
 import vue from 'rollup-plugin-vue';
+import postcss from 'rollup-plugin-postcss';
 import babel from 'rollup-plugin-babel';
-import {uglify} from 'rollup-plugin-uglify';
+import {terser} from 'rollup-plugin-terser';
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
   input: 'src/index.js',
   output: {
-    file: process.env.NODE_ENV === 'production' ? 'dist/js/vue-popper.min.js' : 'dist/js/vue-popper.js',
+    file: isProduction ? 'dist/js/vue-popper.min.js' : 'dist/js/vue-popper.js',
     format: 'umd',
     name: 'VuePopper',
   },
   plugins: [
+    postcss({ extract: true }),
     vue({
-      css (style, styles, compiler) {
-        fs.writeFileSync('dist/css/vue-popper.css', style)
-      }
+      template: { optimizeSSR: true },
+      css: false,
     }),
     babel({
-      babelrc: false,
       runtimeHelpers: true,
       externalHelpers: false,
-      exclude: 'node_modules/**',
-      presets: [['es2015', {'modules': false}]],
-      plugins: [
-        'transform-object-assign',
-        'external-helpers'
-      ]
     }),
-    (process.env.NODE_ENV === 'production' && uglify())
+    (isProduction && terser())
   ],
 };
