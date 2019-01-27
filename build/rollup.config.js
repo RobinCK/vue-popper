@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default {
   input: 'src/index.js',
   output: {
-    file: isProduction ? 'dist/js/vue-popper.min.js' : 'dist/js/vue-popper.js',
+    file: isProduction ? 'dist/vue-popper.min.js' : 'dist/vue-popper.js',
     format: 'umd',
     name: 'VuePopper',
   },
