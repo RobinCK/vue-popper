@@ -24,7 +24,7 @@ VueJS popover component based on <a href="https://popper.js.org/">popper.js</a>
 
 ## Example
 
-[jsFiddle](https://jsfiddle.net/Robin_ck/1espngy1/)
+[jsFiddle](https://jsfiddle.net/Robin_ck/n840tvp2/)
 
 ## Install
 #### CDN
