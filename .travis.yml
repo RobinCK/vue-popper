@@ -14,7 +14,7 @@ install:
   - yarn install
 
 script:
-  - npm run build
+  - yarn build
 
 notifications:
   email: false
