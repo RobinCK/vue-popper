@@ -360,7 +360,7 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/user/projects/vue-popper/src/component/popper.js.vue";
+  script.__file = "/Users/igor/projects/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
@@ -412,7 +412,7 @@
     /* scoped */
     const __vue_scope_id__ = undefined;
     /* module identifier */
-    const __vue_module_identifier__ = "data-v-372bd555";
+    const __vue_module_identifier__ = "data-v-64b9250b";
     /* functional template */
     const __vue_is_functional_template__ = false;
     /* style inject */
