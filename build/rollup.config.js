@@ -15,7 +15,7 @@ export default {
   plugins: [
     postcss({ extract: true }),
     vue({
-      template: { optimizeSSR: true },
+      template: {},
       css: false,
     }),
     babel({
