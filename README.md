@@ -82,7 +82,7 @@ npm run build
 
 <script>
   import Popper from 'vue-popperjs';
-  import 'vue-popperjs/dist/css/vue-popper.css';
+  import 'vue-popperjs/dist/vue-popper.css';
   
   export default {
     components: {
