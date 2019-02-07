@@ -111,7 +111,7 @@
       trigger: {
         type: String,
         default: 'hover',
-        validator: value => ['click', 'hover'].indexOf(value) > -1
+        validator: value => ['clickToOpen', 'clickToToggle', 'hover'].indexOf(value) > -1
       },
       delayOnMouseOver: {
         type: Number,
@@ -213,7 +213,11 @@
       this.popper = this.$slots.default[0].elm;
 
       switch (this.trigger) {
-        case 'click':
+        case 'clickToOpen':
+          on(this.referenceElm, 'click', this.doShow);
+          on(document, 'click', this.handleDocumentClick);
+          break;
+        case 'clickToToggle':
           on(this.referenceElm, 'click', this.doToggle);
           on(document, 'click', this.handleDocumentClick);
           break;
