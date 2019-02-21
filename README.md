@@ -144,6 +144,8 @@ npm run build
 | transition          | String    | empty                                           |   |
 | options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
 | data-value          | Any       | null                                            | data of popper  |
+| stop-propagation    | Boolean   | false                                           |  |
+| prevent-default     | Boolean   | false                                           |  |
 
 
 ## Events

@@ -149,6 +149,14 @@
         type: String,
         default: ''
       },
+      stopPropagation: {
+        type: Boolean,
+        default: false
+      },
+      preventDefault: {
+        type: Boolean,
+        default: false
+      },
       options: {
         type: Object,
         default() {
@@ -231,7 +239,15 @@
     },
 
     methods: {
-      doToggle() {
+      doToggle(event) {
+        if(this.stopPropagation) {
+          event.stopPropagation();
+        }
+
+        if(this.preventDefault) {
+          event.preventDefault();
+        }
+
         if (!this.forceShow) {
           this.showPopper = !this.showPopper;
         }

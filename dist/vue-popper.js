@@ -65,6 +65,14 @@
         type: String,
         default: ''
       },
+      stopPropagation: {
+        type: Boolean,
+        default: false
+      },
+      preventDefault: {
+        type: Boolean,
+        default: false
+      },
       options: {
         type: Object,
         default: function _default() {
@@ -144,7 +152,15 @@
       }
     },
     methods: {
-      doToggle: function doToggle() {
+      doToggle: function doToggle(event) {
+        if (this.stopPropagation) {
+          event.stopPropagation();
+        }
+
+        if (this.preventDefault) {
+          event.preventDefault();
+        }
+
         if (!this.forceShow) {
           this.showPopper = !this.showPopper;
         }
@@ -360,7 +376,7 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/igor/projects/vue-popper/src/component/popper.js.vue";
+  script.__file = "/Users/felix.schlenkrich/Documents/Dev/js/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
