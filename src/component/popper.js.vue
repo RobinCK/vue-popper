@@ -79,7 +79,7 @@
 </style>
 
 <template>
-  <span>
+  <component :is="tagName">
     <transition :name="transition" :enter-active-class="enterActiveClass" :leave-active-class="leaveActiveClass" @after-leave="doDestroy">
       <span
         ref="popper"
@@ -88,7 +88,7 @@
       </span>
     </transition>
     <slot name="reference"></slot>
-  </span>
+  </component>
 </template>
 
 <script>
@@ -108,6 +108,10 @@
 
   export default {
     props: {
+      tagName: {
+        type: String,
+        default: 'span',
+      },
       trigger: {
         type: String,
         default: 'hover',
