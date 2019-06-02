@@ -24,26 +24,26 @@
     props: {
       tagName: {
         type: String,
-        default: 'span'
+        "default": 'span'
       },
       trigger: {
         type: String,
-        default: 'hover',
+        "default": 'hover',
         validator: function validator(value) {
           return ['click', 'hover'].indexOf(value) > -1;
         }
       },
       delayOnMouseOver: {
         type: Number,
-        default: 10
+        "default": 10
       },
       delayOnMouseOut: {
         type: Number,
-        default: 10
+        "default": 10
       },
       disabled: {
         type: Boolean,
-        default: false
+        "default": false
       },
       content: String,
       enterActiveClass: String,
@@ -52,34 +52,34 @@
       reference: {},
       forceShow: {
         type: Boolean,
-        default: false
+        "default": false
       },
       dataValue: {
-        default: null
+        "default": null
       },
       appendToBody: {
         type: Boolean,
-        default: false
+        "default": false
       },
       visibleArrow: {
         type: Boolean,
-        default: true
+        "default": true
       },
       transition: {
         type: String,
-        default: ''
+        "default": ''
       },
       stopPropagation: {
         type: Boolean,
-        default: false
+        "default": false
       },
       preventDefault: {
         type: Boolean,
-        default: false
+        "default": false
       },
       options: {
         type: Object,
-        default: function _default() {
+        "default": function _default() {
           return {};
         }
       }
@@ -135,7 +135,7 @@
     },
     mounted: function mounted() {
       this.referenceElm = this.reference || this.$slots.reference[0].elm;
-      this.popper = this.$slots.default[0].elm;
+      this.popper = this.$slots["default"][0].elm;
 
       switch (this.trigger) {
         case 'click':
@@ -380,7 +380,7 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/alfonsobribiesca/Projects/vue-popper/src/component/popper.js.vue";
+  script.__file = "/Users/user/projects/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
