@@ -52,7 +52,7 @@
     "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
     "rollup": "^1.13.1",
-    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-vue": "4.6.1",
