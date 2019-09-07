@@ -388,7 +388,7 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/andrzejswaton/diligen/vue-popper/src/component/popper.js.vue";
+  script.__file = "/Users/user/projects/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
