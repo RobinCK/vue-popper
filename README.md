@@ -136,7 +136,7 @@ npm run build
 | append-to-body      | Boolean   | false                                           |   |
 | visible-arrow       | Boolean   | true                                            |   |
 | force-show          | Boolean   | false                                           |   |
-| trigger             | String    | hover                                           | Optional value: hover or click  |
+| trigger             | String    | hover                                           | Optional value: hover, click or focus |
 | content             | String    | null                                            |   |
 | enter-active-class  | String    | null                                            |   |
 | leave-active-class  | String    | null                                            |   |
@@ -144,6 +144,8 @@ npm run build
 | transition          | String    | empty                                           |   |
 | options             | Object    | { placement: 'bottom', gpuAcceleration: false } | [popper.js](https://popper.js.org/popper-documentation.html) options  |
 | data-value          | Any       | null                                            | data of popper  |
+| stop-propagation    | Boolean   | false                                           |  |
+| prevent-default     | Boolean   | false                                           |  |
 
 
 ## Events

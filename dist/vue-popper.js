@@ -22,24 +22,28 @@
 
   var script = {
     props: {
+      tagName: {
+        type: String,
+        "default": 'span'
+      },
       trigger: {
         type: String,
-        default: 'hover',
+        "default": 'hover',
         validator: function validator(value) {
-          return ['clickToOpen', 'clickToToggle', 'hover'].indexOf(value) > -1;
+          return ['clickToOpen', 'clickToToggle', 'hover', 'focus'].indexOf(value) > -1;
         }
       },
       delayOnMouseOver: {
         type: Number,
-        default: 10
+        "default": 10
       },
       delayOnMouseOut: {
         type: Number,
-        default: 10
+        "default": 10
       },
       disabled: {
         type: Boolean,
-        default: false
+        "default": false
       },
       content: String,
       enterActiveClass: String,
@@ -48,26 +52,34 @@
       reference: {},
       forceShow: {
         type: Boolean,
-        default: false
+        "default": false
       },
       dataValue: {
-        default: null
+        "default": null
       },
       appendToBody: {
         type: Boolean,
-        default: false
+        "default": false
       },
       visibleArrow: {
         type: Boolean,
-        default: true
+        "default": true
       },
       transition: {
         type: String,
-        default: ''
+        "default": ''
+      },
+      stopPropagation: {
+        type: Boolean,
+        "default": false
+      },
+      preventDefault: {
+        type: Boolean,
+        "default": false
       },
       options: {
         type: Object,
-        default: function _default() {
+        "default": function _default() {
           return {};
         }
       }
@@ -123,7 +135,7 @@
     },
     mounted: function mounted() {
       this.referenceElm = this.reference || this.$slots.reference[0].elm;
-      this.popper = this.$slots.default[0].elm;
+      this.popper = this.$slots["default"][0].elm;
 
       switch (this.trigger) {
         case 'clickToOpen':
@@ -138,18 +150,29 @@
 
         case 'hover':
           on(this.referenceElm, 'mouseover', this.onMouseOver);
-          on(this.referenceElm, 'focus', this.onMouseOver);
           on(this.popper, 'mouseover', this.onMouseOver);
-          on(this.popper, 'focus', this.onMouseOver);
           on(this.referenceElm, 'mouseout', this.onMouseOut);
-          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'mouseout', this.onMouseOut);
+          break;
+
+        case 'focus':
+          on(this.referenceElm, 'focus', this.onMouseOver);
+          on(this.popper, 'focus', this.onMouseOver);
+          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'blur', this.onMouseOut);
           break;
       }
     },
     methods: {
-      doToggle: function doToggle() {
+      doToggle: function doToggle(event) {
+        if (this.stopPropagation) {
+          event.stopPropagation();
+        }
+
+        if (this.preventDefault) {
+          event.preventDefault();
+        }
+
         if (!this.forceShow) {
           this.showPopper = !this.showPopper;
         }
@@ -365,14 +388,15 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/igor/projects/vue-popper/src/component/popper.js.vue";
+  script.__file = "/Users/andrzejswaton/diligen/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
     return _c(
-      "span",
+      _vm.tagName,
+      { tag: "component" },
       [
         _c(
           "transition",

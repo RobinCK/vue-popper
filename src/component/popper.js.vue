@@ -79,7 +79,7 @@
 </style>
 
 <template>
-  <span>
+  <component :is="tagName">
     <transition :name="transition" :enter-active-class="enterActiveClass" :leave-active-class="leaveActiveClass" @after-leave="doDestroy">
       <span
         ref="popper"
@@ -88,7 +88,7 @@
       </span>
     </transition>
     <slot name="reference"></slot>
-  </span>
+  </component>
 </template>
 
 <script>
@@ -108,10 +108,14 @@
 
   export default {
     props: {
+      tagName: {
+        type: String,
+        default: 'span',
+      },
       trigger: {
         type: String,
         default: 'hover',
-        validator: value => ['clickToOpen', 'clickToToggle', 'hover'].indexOf(value) > -1
+        validator: value => ['clickToOpen', 'clickToToggle', 'hover', 'focus'].indexOf(value) > -1
       },
       delayOnMouseOver: {
         type: Number,
@@ -148,6 +152,14 @@
       transition: {
         type: String,
         default: ''
+      },
+      stopPropagation: {
+        type: Boolean,
+        default: false
+      },
+      preventDefault: {
+        type: Boolean,
+        default: false
       },
       options: {
         type: Object,
@@ -223,19 +235,29 @@
           break;
         case 'hover':
           on(this.referenceElm, 'mouseover', this.onMouseOver);
-          on(this.referenceElm, 'focus', this.onMouseOver);
           on(this.popper, 'mouseover', this.onMouseOver);
-          on(this.popper, 'focus', this.onMouseOver);
           on(this.referenceElm, 'mouseout', this.onMouseOut);
-          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'mouseout', this.onMouseOut);
+          break;
+        case 'focus':
+          on(this.referenceElm, 'focus', this.onMouseOver);
+          on(this.popper, 'focus', this.onMouseOver);
+          on(this.referenceElm, 'blur', this.onMouseOut);
           on(this.popper, 'blur', this.onMouseOut);
           break;
       }
     },
 
     methods: {
-      doToggle() {
+      doToggle(event) {
+        if(this.stopPropagation) {
+          event.stopPropagation();
+        }
+
+        if(this.preventDefault) {
+          event.preventDefault();
+        }
+
         if (!this.forceShow) {
           this.showPopper = !this.showPopper;
         }
