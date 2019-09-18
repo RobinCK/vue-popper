@@ -13,7 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
-    "build": "rollup -c ./build/rollup.config.js && NODE_ENV=production rollup -c ./build/rollup.config.js"
+    "build": "rollup -c ./build/rollup.config.js && NODE_ENV=production rollup -c ./build/rollup.config.js",
+    "postinstall": "opencollective-postinstall || true"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     ]
   },
   "dependencies": {
+    "opencollective-postinstall": "^2.0.2",
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
@@ -57,5 +59,9 @@
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-vue": "4.6.1",
     "vue-template-compiler": "2.5.22"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/vue-popper"
   }
 }
