@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/RobinCK/vue-popper"><a href="https://opencollective.com/vue-popper" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/vue-popper/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/travis/RobinCK/vue-popper.svg?style=flat-square"></a>
+  <a href="https://opencollective.com/vue-popper" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/vue-popper/all/badge.svg?label=financial+contributors" /></a>
   <a href="https://github.com/RobinCK/vue-popper"><img src="https://img.shields.io/badge/vuejs-2.x-brightgreen.svg?style=flat-square"></a>
   <a href="https://www.npmjs.com/package/vue-popperjs"><img src="https://img.shields.io/npm/dt/vue-popperjs.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper"><img src="https://david-dm.org/RobinCK/vue-popper.svg?style=flat-square"></a>
