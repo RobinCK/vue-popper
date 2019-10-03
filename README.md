@@ -136,7 +136,7 @@ npm run build
 | append-to-body      | Boolean   | false                                           |   |
 | visible-arrow       | Boolean   | true                                            |   |
 | force-show          | Boolean   | false                                           |   |
-| trigger             | String    | hover                                           | Optional value: hover, click or focus |
+| trigger             | String    | hover                                           | Optional value: hover, clickToOpen, clickToToggle, click (deprecated - same as clickToToggle) or focus |
 | content             | String    | null                                            |   |
 | enter-active-class  | String    | null                                            |   |
 | leave-active-class  | String    | null                                            |   |
