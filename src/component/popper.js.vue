@@ -115,7 +115,13 @@
       trigger: {
         type: String,
         default: 'hover',
-        validator: value => ['clickToOpen', 'clickToToggle', 'hover', 'focus'].indexOf(value) > -1
+        validator: value => [
+          'clickToOpen',
+          'click', // Same as clickToToggle, provided for backwards compatibility.
+          'clickToToggle',
+          'hover',
+          'focus'
+        ].indexOf(value) > -1
       },
       delayOnMouseOver: {
         type: Number,
@@ -229,6 +235,7 @@
           on(this.referenceElm, 'click', this.doShow);
           on(document, 'click', this.handleDocumentClick);
           break;
+        case 'click': // Same as clickToToggle, provided for backwards compatibility.
         case 'clickToToggle':
           on(this.referenceElm, 'click', this.doToggle);
           on(document, 'click', this.handleDocumentClick);
