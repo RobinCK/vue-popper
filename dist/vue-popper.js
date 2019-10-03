@@ -30,7 +30,8 @@
         type: String,
         "default": 'hover',
         validator: function validator(value) {
-          return ['clickToOpen', 'clickToToggle', 'hover', 'focus'].indexOf(value) > -1;
+          return ['clickToOpen', 'click', // Same as clickToToggle, provided for backwards compatibility.
+          'clickToToggle', 'hover', 'focus'].indexOf(value) > -1;
         }
       },
       delayOnMouseOver: {
@@ -142,6 +143,8 @@
           on(this.referenceElm, 'click', this.doShow);
           on(document, 'click', this.handleDocumentClick);
           break;
+
+        case 'click': // Same as clickToToggle, provided for backwards compatibility.
 
         case 'clickToToggle':
           on(this.referenceElm, 'click', this.doToggle);
