@@ -137,7 +137,6 @@ npm run build
 | visible-arrow       | Boolean   | true                                            |   |
 | force-show          | Boolean   | false                                           |   |
 | trigger             | String    | hover                                           | Optional value: <br><ul><li>**hover** - hover to open popper content</li><li>**clickToOpen** - every click on the popper triggers open, only clicking outside of the popper closes it</li><li>**clickToToggle** - click on the popper toggles it's visibility</li><li>**click** (deprecated - same as **clickToToggle**)</li><li>**focus** - opens popper on focus event, closes on blur.</li> |
-
 | content             | String    | null                                            |   |
 | enter-active-class  | String    | null                                            |   |
 | leave-active-class  | String    | null                                            |   |
