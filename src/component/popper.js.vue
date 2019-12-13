@@ -83,6 +83,7 @@
     <transition :name="transition" :enter-active-class="enterActiveClass" :leave-active-class="leaveActiveClass" @after-leave="doDestroy">
       <span
         ref="popper"
+        :class="rootClass"
         v-show="!disabled && showPopper">
         <slot>{{ content }}</slot>
       </span>
@@ -172,6 +173,10 @@
         default() {
           return {};
         }
+      },
+      rootClass: {
+        type: String,
+        default: ''
       }
     },
 

@@ -8,8 +8,8 @@
   <a href="https://www.npmjs.com/package/vue-popperjs"><img src="https://img.shields.io/npm/dt/vue-popperjs.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper"><img src="https://david-dm.org/RobinCK/vue-popper.svg?style=flat-square"></a>
   <a href="https://david-dm.org/RobinCK/vue-popper?type=dev"><img src="https://david-dm.org/RobinCK/vue-popper/dev-status.svg?style=flat-square"></a>
-</p>  
-  
+</p>
+
 <p align="center">
   <a href="https://github.com/RobinCK/vue-popper"><img src="https://img.shields.io/bower/v/vue-popperjs.svg?style=flat-square"></a>
   <a href="https://github.com/RobinCK/vue-popper"><img src="https://img.shields.io/npm/v/vue-popperjs.svg?style=flat-square"></a>
@@ -83,13 +83,13 @@ npm run build
 <script>
   import Popper from 'vue-popperjs';
   import 'vue-popperjs/dist/vue-popper.css';
-  
+
   export default {
     components: {
       'popper': Popper
     },
   }
-</script> 
+</script>
 ```
 
 ### Browser (ES5)
@@ -146,6 +146,7 @@ npm run build
 | data-value          | Any       | null                                            | data of popper  |
 | stop-propagation    | Boolean   | false                                           |  |
 | prevent-default     | Boolean   | false                                           |  |
+| root-class          | String    | empty                                           | Class name for root element |
 
 
 ## Events
