@@ -83,6 +83,10 @@
         "default": function _default() {
           return {};
         }
+      },
+      rootClass: {
+        type: String,
+        "default": ''
       }
     },
     data: function data() {
@@ -423,7 +427,8 @@
                     expression: "!disabled && showPopper"
                   }
                 ],
-                ref: "popper"
+                ref: "popper",
+                class: _vm.rootClass
               },
               [_vm._t("default", [_vm._v(_vm._s(_vm.content))])],
               2
