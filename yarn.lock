@@ -2585,10 +2585,6 @@ require-from-string@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
 
-reserved-words@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/reserved-words/-/reserved-words-0.1.2.tgz#00a0940f98cd501aeaaac316411d9adc52b31ab1"
-
 resolve-from@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
@@ -2631,9 +2627,10 @@ rollup-plugin-babel@4.3.2:
     "@babel/helper-module-imports" "^7.0.0"
     rollup-pluginutils "^2.3.0"
 
-rollup-plugin-postcss@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-postcss/-/rollup-plugin-postcss-2.0.3.tgz#1fd5b7e1fc7545cb0084d9c99d11b259e41a05e6"
+rollup-plugin-postcss@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-postcss/-/rollup-plugin-postcss-2.3.0.tgz#25112a6206330d589385da3a8a846c32ed56146f"
+  integrity sha512-XHtQ4MWz5ANukEiaZznIJ3TVcuirrOUn4JvHA5OdLC21DCJlhA51VDNyYhf2I8vVVY69A8ipqOq3GlAy8OjhQA==
   dependencies:
     chalk "^2.4.2"
     concat-with-sourcemaps "^1.0.5"
@@ -2645,9 +2642,9 @@ rollup-plugin-postcss@^2.0.3:
     postcss-load-config "^2.0.0"
     postcss-modules "^1.4.1"
     promise.series "^0.2.0"
-    reserved-words "^0.1.2"
     resolve "^1.5.0"
     rollup-pluginutils "^2.0.1"
+    safe-identifier "^0.3.1"
     style-inject "^0.3.0"
 
 rollup-plugin-terser@^5.0.0:
@@ -2702,6 +2699,11 @@ rxjs@^6.4.0:
 safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
+
+safe-identifier@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/safe-identifier/-/safe-identifier-0.3.1.tgz#466b956ef8558b10bbe15b87fedf470ab283cd39"
+  integrity sha512-+vr9lVsmciuoP1fz8w30qDcohwH2S/tb5dPGQ8zHmG9jQf7YHU2fIKGxxcDpeY38J0Dep+DdPMz8FszVZT0Mbw==
 
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
