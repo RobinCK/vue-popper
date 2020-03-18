@@ -1,8 +1,10 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
-  (global = global || self, global.VuePopper = factory(global.core));
-}(this, (function (core) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('@popperjs/core/lib/utils/detectOverflow.js')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core', '@popperjs/core/lib/utils/detectOverflow.js'], factory) :
+  (global = global || self, global.VuePopper = factory(global.core, global.detectOverflow));
+}(this, (function (core, detectOverflow) { 'use strict';
+
+  detectOverflow = detectOverflow && Object.prototype.hasOwnProperty.call(detectOverflow, 'default') ? detectOverflow['default'] : detectOverflow;
 
   //
 
@@ -221,12 +223,13 @@
           }
 
           if (_this.boundariesSelector) {
-            var boundariesElement = document.querySelector(_this.boundariesSelector);
+            var customBoundary = document.querySelector(_this.boundariesSelector);
 
-            if (boundariesElement) {
-              _this.popperOptions.modifiers = Object.assign({}, _this.popperOptions.modifiers);
-              _this.popperOptions.modifiers.preventOverflow = Object.assign({}, _this.popperOptions.modifiers.preventOverflow);
-              _this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
+            if (customBoundary) {
+              detectOverflow(state, {
+                boundary: customBoundary // 'clippingParents' by default
+
+              });
             }
           }
 

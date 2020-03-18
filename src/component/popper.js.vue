@@ -55,6 +55,7 @@
 
 <script>
   import { createPopper } from '@popperjs/core';
+  import detectOverflow from '@popperjs/core/lib/utils/detectOverflow.js';
 
   function on(element, event, handler) {
     if (element && event && handler) {
@@ -281,12 +282,12 @@
           }
 
           if (this.boundariesSelector) {
-            const boundariesElement = document.querySelector(this.boundariesSelector);
+            const customBoundary = document.querySelector(this.boundariesSelector);
 
-            if (boundariesElement) {
-              this.popperOptions.modifiers = Object.assign({}, this.popperOptions.modifiers);
-              this.popperOptions.modifiers.preventOverflow = Object.assign({}, this.popperOptions.modifiers.preventOverflow);
-              this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
+            if (customBoundary) {
+              detectOverflow(state, {
+                boundary: customBoundary, // 'clippingParents' by default
+              });
             }
           }
 
