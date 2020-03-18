@@ -1,10 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('popper.js')) :
-  typeof define === 'function' && define.amd ? define(['popper.js'], factory) :
-  (global = global || self, global.VuePopper = factory(global.Popper));
-}(this, function (Popper) { 'use strict';
-
-  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
+  (global = global || self, global.VuePopper = factory(global.core));
+}(this, (function (core) { 'use strict';
 
   //
 
@@ -97,27 +95,27 @@
         currentPlacement: '',
         popperOptions: {
           placement: 'bottom',
-          computeStyle: {
-            gpuAcceleration: false
-          }
+          modifiers: [{
+            name: 'offset',
+            options: {
+              offset: [0, 8]
+            }
+          }, {
+            name: 'computeStyles',
+            options: {
+              gpuAcceleration: false // true by default
+
+            }
+          }]
         }
       };
     },
     watch: {
       showPopper: function showPopper(value) {
         if (value) {
-          this.$emit('show', this);
-
-          if (this.popperJS) {
-            this.popperJS.enableEventListeners();
-          }
-
           this.updatePopper();
+          this.$emit('show', this);
         } else {
-          if (this.popperJS) {
-            this.popperJS.disableEventListeners();
-          }
-
           this.$emit('hide', this);
         }
       },
@@ -205,7 +203,7 @@
           document.body.removeChild(this.popper.parentElement);
         }
       },
-      createPopper: function createPopper() {
+      doCreatePopper: function doCreatePopper() {
         var _this = this;
 
         this.$nextTick(function () {
@@ -232,13 +230,13 @@
             }
           }
 
-          _this.popperOptions.onCreate = function () {
+          _this.popperOptions.onFirstUpdate = function () {
             _this.$emit('created', _this);
 
             _this.$nextTick(_this.updatePopper);
           };
 
-          _this.popperJS = new Popper(_this.referenceElm, _this.popper, _this.popperOptions);
+          _this.popperJS = core.createPopper(_this.referenceElm, _this.popper, _this.popperOptions);
         });
       },
       destroyPopper: function destroyPopper() {
@@ -260,12 +258,12 @@
 
         this.appendedArrow = true;
         var arrow = document.createElement('div');
-        arrow.setAttribute('x-arrow', '');
+        arrow.setAttribute('data-popper-arrow', '');
         arrow.className = 'popper__arrow';
         element.appendChild(arrow);
       },
       updatePopper: function updatePopper() {
-        this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
+        this.popperJS ? this.popperJS.update() : this.doCreatePopper();
       },
       onMouseOver: function onMouseOver() {
         var _this2 = this;
@@ -395,7 +393,7 @@
   /* script */
   const __vue_script__ = script;
   // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/user/projects/vue-popper/src/component/popper.js.vue";
+  script.__file = "/home/curtis/code/github.com/RobinCK/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
@@ -471,4 +469,4 @@
 
   return VuePopper;
 
-}));
+})));
