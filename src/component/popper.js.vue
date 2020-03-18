@@ -93,7 +93,7 @@
 </template>
 
 <script>
-  import Popper from 'popper.js';
+  import { createPopper } from '@popperjs/core';
 
   function on(element, event, handler) {
     if (element && event && handler) {
@@ -299,7 +299,7 @@
         }
       },
 
-      createPopper() {
+      doCreatePopper() {
         this.$nextTick(() => {
           if (this.visibleArrow) {
             this.appendArrow(this.popper);
@@ -329,7 +329,7 @@
             this.$nextTick(this.updatePopper);
           };
 
-          this.popperJS = new Popper(this.referenceElm, this.popper, this.popperOptions);
+          this.popperJS = createPopper(this.referenceElm, this.popper, this.popperOptions);
         });
       },
 
@@ -361,7 +361,7 @@
       },
 
       updatePopper() {
-        this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
+        this.popperJS ? this.popperJS.scheduleUpdate() : this.doCreatePopper();
       },
 
       onMouseOver() {
