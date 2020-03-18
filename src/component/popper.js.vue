@@ -322,7 +322,7 @@
       },
 
       updatePopper() {
-        this.popperJS ? this.popperJS.scheduleUpdate() : this.doCreatePopper();
+        this.popperJS ? this.popperJS.update() : this.doCreatePopper();
       },
 
       onMouseOver() {
