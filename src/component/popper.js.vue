@@ -157,12 +157,6 @@
                 offset: [0, 8],
               },
             },
-            {
-              name: 'computeStyles',
-              options: {
-                gpuAcceleration: false, // true by default
-              },
-            },
           ],
         }
       };
