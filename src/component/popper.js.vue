@@ -279,7 +279,7 @@
             }
           }
 
-          this.popperOptions.onCreate = () => {
+          this.popperOptions.onFirstUpdate = () => {
             this.$emit('created', this);
             this.$nextTick(this.updatePopper);
           };
