@@ -159,15 +159,9 @@
     watch: {
       showPopper(value) {
         if (value) {
-          this.$emit('show', this);
-          if (this.popperJS) {
-            this.popperJS.enableEventListeners();
-          }
           this.updatePopper();
+          this.$emit('show', this);
         } else {
-          if (this.popperJS) {
-            this.popperJS.disableEventListeners();
-          }
           this.$emit('hide', this);
         }
       },
