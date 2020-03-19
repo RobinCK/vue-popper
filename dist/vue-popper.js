@@ -1,10 +1,10 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('popper.js')) :
-  typeof define === 'function' && define.amd ? define(['popper.js'], factory) :
-  (global = global || self, global.VuePopper = factory(global.Popper));
-}(this, function (Popper) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('@popperjs/core/lib/utils/detectOverflow.js')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core', '@popperjs/core/lib/utils/detectOverflow.js'], factory) :
+  (global = global || self, global.VuePopper = factory(global.Popper, global.detectOverflow));
+}(this, (function (core, detectOverflow) { 'use strict';
 
-  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+  detectOverflow = detectOverflow && Object.prototype.hasOwnProperty.call(detectOverflow, 'default') ? detectOverflow['default'] : detectOverflow;
 
   //
 
@@ -97,27 +97,21 @@
         currentPlacement: '',
         popperOptions: {
           placement: 'bottom',
-          computeStyle: {
-            gpuAcceleration: false
-          }
+          modifiers: [{
+            name: 'offset',
+            options: {
+              offset: [0, 8]
+            }
+          }]
         }
       };
     },
     watch: {
       showPopper: function showPopper(value) {
         if (value) {
-          this.$emit('show', this);
-
-          if (this.popperJS) {
-            this.popperJS.enableEventListeners();
-          }
-
           this.updatePopper();
+          this.$emit('show', this);
         } else {
-          if (this.popperJS) {
-            this.popperJS.disableEventListeners();
-          }
-
           this.$emit('hide', this);
         }
       },
@@ -205,7 +199,7 @@
           document.body.removeChild(this.popper.parentElement);
         }
       },
-      createPopper: function createPopper() {
+      doCreatePopper: function doCreatePopper() {
         var _this = this;
 
         this.$nextTick(function () {
@@ -223,22 +217,23 @@
           }
 
           if (_this.boundariesSelector) {
-            var boundariesElement = document.querySelector(_this.boundariesSelector);
+            var customBoundary = document.querySelector(_this.boundariesSelector);
 
-            if (boundariesElement) {
-              _this.popperOptions.modifiers = Object.assign({}, _this.popperOptions.modifiers);
-              _this.popperOptions.modifiers.preventOverflow = Object.assign({}, _this.popperOptions.modifiers.preventOverflow);
-              _this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
+            if (customBoundary) {
+              detectOverflow(state, {
+                boundary: customBoundary // 'clippingParents' by default
+
+              });
             }
           }
 
-          _this.popperOptions.onCreate = function () {
+          _this.popperOptions.onFirstUpdate = function () {
             _this.$emit('created', _this);
 
             _this.$nextTick(_this.updatePopper);
           };
 
-          _this.popperJS = new Popper(_this.referenceElm, _this.popper, _this.popperOptions);
+          _this.popperJS = core.createPopper(_this.referenceElm, _this.popper, _this.popperOptions);
         });
       },
       destroyPopper: function destroyPopper() {
@@ -260,12 +255,12 @@
 
         this.appendedArrow = true;
         var arrow = document.createElement('div');
-        arrow.setAttribute('x-arrow', '');
+        arrow.setAttribute('data-popper-arrow', '');
         arrow.className = 'popper__arrow';
         element.appendChild(arrow);
       },
       updatePopper: function updatePopper() {
-        this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
+        this.popperJS ? this.popperJS.update() : this.doCreatePopper();
       },
       onMouseOver: function onMouseOver() {
         var _this2 = this;
@@ -309,21 +304,21 @@
     }
   };
 
-  function normalizeComponent(compiledTemplate, injectStyle, defaultExport, scopeId, isFunctionalTemplate, moduleIdentifier
+  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
   /* server only */
-  , isShadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-    if (typeof isShadowMode === 'function') {
+  , shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
       createInjectorSSR = createInjector;
-      createInjector = isShadowMode;
-      isShadowMode = false;
-    } // Vue.extend constructor export interop
+      createInjector = shadowMode;
+      shadowMode = false;
+    } // Vue.extend constructor export interop.
 
 
-    const options = typeof defaultExport === 'function' ? defaultExport.options : defaultExport; // render functions
+    const options = typeof script === 'function' ? script.options : script; // render functions
 
-    if (compiledTemplate && compiledTemplate.render) {
-      options.render = compiledTemplate.render;
-      options.staticRenderFns = compiledTemplate.staticRenderFns;
+    if (template && template.render) {
+      options.render = template.render;
+      options.staticRenderFns = template.staticRenderFns;
       options._compiled = true; // functional template
 
       if (isFunctionalTemplate) {
@@ -352,8 +347,8 @@
         } // inject component styles
 
 
-        if (injectStyle) {
-          injectStyle.call(this, createInjectorSSR(context));
+        if (style) {
+          style.call(this, createInjectorSSR(context));
         } // register component module identifier for async chunk inference
 
 
@@ -365,11 +360,11 @@
 
 
       options._ssrRegister = hook;
-    } else if (injectStyle) {
-      hook = isShadowMode ? function () {
-        injectStyle.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    } else if (style) {
+      hook = shadowMode ? function (context) {
+        style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
       } : function (context) {
-        injectStyle.call(this, createInjector(context));
+        style.call(this, createInjector(context));
       };
     }
 
@@ -389,13 +384,11 @@
       }
     }
 
-    return defaultExport;
+    return script;
   }
 
   /* script */
   const __vue_script__ = script;
-  // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/Users/user/projects/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
@@ -456,19 +449,23 @@
     
     /* style inject SSR */
     
+    /* style inject shadow dom */
+    
 
     
-    var VuePopper = normalizeComponent(
+    const __vue_component__ = normalizeComponent(
       { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
       __vue_inject_styles__,
       __vue_script__,
       __vue_scope_id__,
       __vue_is_functional_template__,
       __vue_module_identifier__,
+      false,
+      undefined,
       undefined,
       undefined
     );
 
-  return VuePopper;
+  return __vue_component__;
 
-}));
+})));
