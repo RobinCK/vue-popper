@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('@popperjs/core/lib/utils/detectOverflow.js')) :
   typeof define === 'function' && define.amd ? define(['@popperjs/core', '@popperjs/core/lib/utils/detectOverflow.js'], factory) :
-  (global = global || self, global.VuePopper = factory(global.core, global.detectOverflow));
+  (global = global || self, global.VuePopper = factory(global.Popper, global.detectOverflow));
 }(this, (function (core, detectOverflow) { 'use strict';
 
   detectOverflow = detectOverflow && Object.prototype.hasOwnProperty.call(detectOverflow, 'default') ? detectOverflow['default'] : detectOverflow;
@@ -304,21 +304,21 @@
     }
   };
 
-  function normalizeComponent(compiledTemplate, injectStyle, defaultExport, scopeId, isFunctionalTemplate, moduleIdentifier
+  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
   /* server only */
-  , isShadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-    if (typeof isShadowMode === 'function') {
+  , shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
       createInjectorSSR = createInjector;
-      createInjector = isShadowMode;
-      isShadowMode = false;
-    } // Vue.extend constructor export interop
+      createInjector = shadowMode;
+      shadowMode = false;
+    } // Vue.extend constructor export interop.
 
 
-    const options = typeof defaultExport === 'function' ? defaultExport.options : defaultExport; // render functions
+    const options = typeof script === 'function' ? script.options : script; // render functions
 
-    if (compiledTemplate && compiledTemplate.render) {
-      options.render = compiledTemplate.render;
-      options.staticRenderFns = compiledTemplate.staticRenderFns;
+    if (template && template.render) {
+      options.render = template.render;
+      options.staticRenderFns = template.staticRenderFns;
       options._compiled = true; // functional template
 
       if (isFunctionalTemplate) {
@@ -347,8 +347,8 @@
         } // inject component styles
 
 
-        if (injectStyle) {
-          injectStyle.call(this, createInjectorSSR(context));
+        if (style) {
+          style.call(this, createInjectorSSR(context));
         } // register component module identifier for async chunk inference
 
 
@@ -360,11 +360,11 @@
 
 
       options._ssrRegister = hook;
-    } else if (injectStyle) {
-      hook = isShadowMode ? function () {
-        injectStyle.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    } else if (style) {
+      hook = shadowMode ? function (context) {
+        style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
       } : function (context) {
-        injectStyle.call(this, createInjector(context));
+        style.call(this, createInjector(context));
       };
     }
 
@@ -384,13 +384,11 @@
       }
     }
 
-    return defaultExport;
+    return script;
   }
 
   /* script */
   const __vue_script__ = script;
-  // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-  script.__file = "/home/curtis/code/github.com/RobinCK/vue-popper/src/component/popper.js.vue";
   /* template */
   var __vue_render__ = function() {
     var _vm = this;
@@ -451,19 +449,23 @@
     
     /* style inject SSR */
     
+    /* style inject shadow dom */
+    
 
     
-    var VuePopper = normalizeComponent(
+    const __vue_component__ = normalizeComponent(
       { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
       __vue_inject_styles__,
       __vue_script__,
       __vue_scope_id__,
       __vue_is_functional_template__,
       __vue_module_identifier__,
+      false,
+      undefined,
       undefined,
       undefined
     );
 
-  return VuePopper;
+  return __vue_component__;
 
 })));
