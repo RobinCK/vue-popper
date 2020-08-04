@@ -79,7 +79,7 @@
 </style>
 
 <template>
-  <component :is="tagName">
+  <component :is="tagName" :class="{'popper-active': showPopper}">
     <transition :name="transition" :enter-active-class="enterActiveClass" :leave-active-class="leaveActiveClass" @after-leave="doDestroy">
       <span
         ref="popper"
