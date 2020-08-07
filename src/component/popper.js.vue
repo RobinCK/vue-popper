@@ -239,11 +239,13 @@
         case 'clickToOpen':
           on(this.referenceElm, 'click', this.doShow);
           on(document, 'click', this.handleDocumentClick);
+          on(document, 'touchstart', this.handleDocumentClick);
           break;
         case 'click': // Same as clickToToggle, provided for backwards compatibility.
         case 'clickToToggle':
           on(this.referenceElm, 'click', this.doToggle);
           on(document, 'click', this.handleDocumentClick);
+          on(document, 'touchstart', this.handleDocumentClick);
           break;
         case 'hover':
           on(this.referenceElm, 'mouseover', this.onMouseOver);
