@@ -148,8 +148,8 @@
       dataValue: {
         default: null,
       },
-      appendToBody: {
-        type: Boolean,
+      container: {
+        type: String,
         default: false
       },
       visibleArrow: {
@@ -227,7 +227,7 @@
 
     created() {
       this.appendedArrow = false;
-      this.appendedToBody = false;
+      this.appendedToContainer = false;
       this.popperOptions = Object.assign(this.popperOptions, this.options);
     },
 
@@ -293,9 +293,10 @@
           this.popperJS = null;
         }
 
-        if (this.appendedToBody) {
-          this.appendedToBody = false;
-          document.body.removeChild(this.popper.parentElement);
+        if (this.appendedToContainer) {
+          this.appendedToContainer = false;
+          const container = document.querySelector(this.container);
+          container.removeChild(this.popper.parentElement);
         }
       },
 
@@ -305,9 +306,10 @@
             this.appendArrow(this.popper);
           }
 
-          if (this.appendToBody && !this.appendedToBody) {
-            this.appendedToBody = true;
-            document.body.appendChild(this.popper.parentElement);
+          if (this.container && !this.appendedToContainer) {
+            this.appendedToContainer = true;
+            const container = document.querySelector(this.container);
+            container.appendChild(this.popper.parentElement);
           }
 
           if (this.popperJS && this.popperJS.destroy) {
