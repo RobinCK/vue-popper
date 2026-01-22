@@ -1,80 +1,41 @@
 <style>
   .popper {
-    width: auto;
-    background-color: #fafafa;
-    color: #212121;
-    text-align: center;
-    padding: 2px;
-    display: inline-block;
-    border-radius: 3px;
+    background: #333;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+  }
+
+  .popper__arrow,
+  .popper__arrow::before {
     position: absolute;
-    font-size: 14px;
-    font-weight: normal;
-    border: 1px #ebebeb solid;
-    z-index: 200000;
-    -moz-box-shadow: rgb(58, 58, 58) 0 0 6px 0;
-    -webkit-box-shadow: rgb(58, 58, 58) 0 0 6px 0;
-    box-shadow: rgb(58, 58, 58) 0 0 6px 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    z-index: -1;
   }
 
-  .popper .popper__arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
+  .popper__arrow::before {
+    content: '';
+    transform: rotate(45deg);
+    background: #333;
   }
 
-  .popper[x-placement^="top"] {
-    margin-bottom: 5px;
+  .popper[data-popper-placement^='top'] .popper__arrow {
+    bottom: -4px;
   }
 
-  .popper[x-placement^="top"] .popper__arrow {
-    border-width: 5px 5px 0 5px;
-    border-color: #fafafa transparent transparent transparent;
-    bottom: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
+  .popper[data-popper-placement^='bottom'] .popper__arrow {
+    top: -4px;
   }
 
-  .popper[x-placement^="bottom"] {
-    margin-top: 5px;
+  .popper[data-popper-placement^='right'] .popper__arrow {
+    left: -4px;
   }
-
-  .popper[x-placement^="bottom"] .popper__arrow {
-    border-width: 0 5px 5px 5px;
-    border-color: transparent transparent #fafafa transparent;
-    top: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .popper[x-placement^="right"] {
-    margin-left: 5px;
-  }
-
-  .popper[x-placement^="right"] .popper__arrow {
-    border-width: 5px 5px 5px 0;
-    border-color: transparent #fafafa transparent transparent;
-    left: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .popper[x-placement^="left"] {
-    margin-right: 5px;
-  }
-
-  .popper[x-placement^="left"] .popper__arrow {
-    border-width: 5px 0 5px 5px;
-    border-color: transparent transparent transparent #fafafa;
-    right: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
+  .popper[data-popper-placement^='left'] .popper__arrow {
+    right: -4px;
   }
 </style>
 
@@ -93,7 +54,8 @@
 </template>
 
 <script>
-  import Popper from 'popper.js';
+  import { createPopper } from '@popperjs/core';
+  import detectOverflow from '@popperjs/core/lib/utils/detectOverflow.js';
 
   function on(element, event, handler) {
     if (element && event && handler) {
@@ -188,9 +150,14 @@
         currentPlacement: '',
         popperOptions: {
           placement: 'bottom',
-          computeStyle: {
-            gpuAcceleration: false
-          }
+          modifiers: [
+            {
+              name: 'offset',
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ],
         }
       };
     },
@@ -198,15 +165,9 @@
     watch: {
       showPopper(value) {
         if (value) {
-          this.$emit('show', this);
-          if (this.popperJS) {
-            this.popperJS.enableEventListeners();
-          }
           this.updatePopper();
+          this.$emit('show', this);
         } else {
-          if (this.popperJS) {
-            this.popperJS.disableEventListeners();
-          }
           this.$emit('hide', this);
         }
       },
@@ -301,7 +262,7 @@
         }
       },
 
-      createPopper() {
+      doCreatePopper() {
         this.$nextTick(() => {
           if (this.visibleArrow) {
             this.appendArrow(this.popper);
@@ -317,21 +278,21 @@
           }
 
           if (this.boundariesSelector) {
-            const boundariesElement = document.querySelector(this.boundariesSelector);
+            const customBoundary = document.querySelector(this.boundariesSelector);
 
-            if (boundariesElement) {
-              this.popperOptions.modifiers = Object.assign({}, this.popperOptions.modifiers);
-              this.popperOptions.modifiers.preventOverflow = Object.assign({}, this.popperOptions.modifiers.preventOverflow);
-              this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
+            if (customBoundary) {
+              detectOverflow(state, {
+                boundary: customBoundary, // 'clippingParents' by default
+              });
             }
           }
 
-          this.popperOptions.onCreate = () => {
+          this.popperOptions.onFirstUpdate = () => {
             this.$emit('created', this);
             this.$nextTick(this.updatePopper);
           };
 
-          this.popperJS = new Popper(this.referenceElm, this.popper, this.popperOptions);
+          this.popperJS = createPopper(this.referenceElm, this.popper, this.popperOptions);
         });
       },
 
@@ -357,13 +318,13 @@
         this.appendedArrow = true;
 
         const arrow = document.createElement('div');
-        arrow.setAttribute('x-arrow', '');
+        arrow.setAttribute('data-popper-arrow', '');
         arrow.className = 'popper__arrow';
         element.appendChild(arrow);
       },
 
       updatePopper() {
-        this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
+        this.popperJS ? this.popperJS.update() : this.doCreatePopper();
       },
 
       onMouseOver() {

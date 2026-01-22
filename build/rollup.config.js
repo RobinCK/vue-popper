@@ -11,6 +11,9 @@ export default {
     file: isProduction ? 'dist/vue-popper.min.js' : 'dist/vue-popper.js',
     format: 'umd',
     name: 'VuePopper',
+    globals: {
+      '@popperjs/core': 'Popper',
+    },
   },
   plugins: [
     postcss({ extract: true }),
